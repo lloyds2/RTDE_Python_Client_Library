@@ -58,8 +58,12 @@ setp = con.send_input_setup(setp_names, setp_types)
 watchdog = con.send_input_setup(watchdog_names, watchdog_types)
 
 # Setpoints to move the robot to
-setp1 = [-0.12, -0.43, 0.14, 0, 3.11, 0.04]
-setp2 = [-0.12, -0.51, 0.21, 0, 3.11, 0.04]
+setp1 = [-0.12, -4.0, -1.0, 0, -3.167, -0.04]
+setp2 = [0.12, -4.0, -0.30, 0, -3.167, -0.04]
+
+# old set points 
+# setp1 = [-0.12, -0.51, 0.21, 0, 3.11, 0.04]
+# setp2 = [-0.12, -0.43, 0.14, 0, 3.11, 0.04]
 
 setp.input_double_register_0 = 0
 setp.input_double_register_1 = 0
@@ -109,6 +113,7 @@ while keep_running:
         watchdog.input_int_register_0 = 1
     elif not move_completed and state.output_int_register_0 == 0:
         print("Move to confirmed pose = " + str(state.target_q))
+        print("Actual TCP Pose = " + str(state.actual_TCP_pose))
         move_completed = True
         watchdog.input_int_register_0 = 0
 

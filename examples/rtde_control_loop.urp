@@ -1,4 +1,4 @@
-<URProgram createdIn="3.2.19275.0" lastSavedIn="3.6.1.30595" robotSerialNumber="2014359999" name="rtde_control_loop" directory="/home/ur/ursim-current/programs" installation="default" crcValue="2588156642">
+<URProgram createdIn="3.2.19275.0" lastSavedIn="3.6.1.30595" robotSerialNumber="20235300917" name="rtde_control_loop" directory="/home/ur/ursim-current/programs" installation="default" crcValue="2588156642">
   <children>
     <SpecialSequence type="BeforeStart">
       <children>
@@ -121,7 +121,7 @@
         </Script>
       </children>
     </SpecialSequence>
-    <MainProgram runOnlyOnce="false" motionType="MoveJ" speed="1.0471975511965976" acceleration="1.3962634015954636" useActiveTCP="false">
+    <MainProgram runOnlyOnce="false" motionType="MoveJ" speed="1.0" acceleration="1.2" useActiveTCP="false">
       <children>
         <If type="If" checkContinuously="false">
           <expression>
@@ -184,7 +184,7 @@
           </expression>
           <children>
             <Comment comment="Valid pose received from client"/>
-            <Move motionType="MoveL" speed="0.08" acceleration="1.2" useActiveTCP="false">
+            <Move motionType="MoveJ" speed="0.08" acceleration="1.2" useActiveTCP="false">
               <feature class="GeomFeatureReference" referencedName="Joint_0_name"/>
               <children>
                 <Waypoint type="Variable" name="Waypoint" kinematicsFlags="-1">
