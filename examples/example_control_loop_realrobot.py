@@ -41,7 +41,7 @@ import rtde.rtde_config as rtde_config
 
 # logging.basicConfig(level=logging.INFO)
 
-ROBOT_HOST = "10.54.90.167"
+ROBOT_HOST = "10.54.90.23"
 ROBOT_PORT = 30004
 config_filename = "control_loop_configuration.xml"
 
@@ -66,8 +66,8 @@ setp = con.send_input_setup(setp_names, setp_types)
 watchdog = con.send_input_setup(watchdog_names, watchdog_types)
 
 # Setpoints to move the robot to
-setp1 = [-0.12, -2.0, 0.21, 0, 3.11, 0.04]
-setp2 = [-0.12, -2.0, -1.0, 0, 3.11, 0.04]
+setp1 = [-0.12, -0.51, 0.21, 0, 3.11, 0.04]
+setp2 = [-0.12, -0.43, 0.14, 0, 3.11, 0.04]
 
 setp.input_double_register_0 = 0
 setp.input_double_register_1 = 0
@@ -112,11 +112,13 @@ while keep_running:
         new_setp = setp1 if setp_to_list(setp) == setp2 else setp2
         list_to_setp(setp, new_setp)
         print("New pose = " + str(new_setp))
+        print("Actual TCP Pose = " + str(state.actual_TCP_pose))
         # send new setpoint
         con.send(setp)
         watchdog.input_int_register_0 = 1
     elif not move_completed and state.output_int_register_0 == 0:
         print("Move to confirmed pose = " + str(state.target_q))
+        
         move_completed = True
         watchdog.input_int_register_0 = 0
 

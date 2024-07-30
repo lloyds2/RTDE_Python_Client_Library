@@ -58,12 +58,13 @@ setp = con.send_input_setup(setp_names, setp_types)
 watchdog = con.send_input_setup(watchdog_names, watchdog_types)
 
 # Setpoints to move the robot to
-setp1 = [-0.12, -4.0, -1.0, 0, -3.167, -0.04]
-setp2 = [0.12, -4.0, -0.30, 0, -3.167, -0.04]
+
+# setp1 = [1.88, 2.14,6.0,2.528,-0.24,2.45]
+# setp2 = [1.88, 2.00,6.2,2.528,-0.24,2.45]
 
 # old set points 
-# setp1 = [-0.12, -0.51, 0.21, 0, 3.11, 0.04]
-# setp2 = [-0.12, -0.43, 0.14, 0, 3.11, 0.04]
+setp1 = [-0.12, -0.51, 0.21, 0, 3.11, 0.04]
+setp2 = [-0.12, -0.43, 0.14, 0, 3.11, 0.04]
 
 setp.input_double_register_0 = 0
 setp.input_double_register_1 = 0
